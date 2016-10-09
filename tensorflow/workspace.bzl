@@ -158,11 +158,17 @@ def tf_workspace(path_prefix = "", tf_repo_name = ""):
     actual = "@grpc//:grpc++_unsecure",
   )
 
-  native.new_git_repository(
+  #native.new_git_repository(
+  #  name = "linenoise",
+  #  commit = "c894b9e59f02203dbe4e2be657572cf88c4230c3",
+  #  init_submodules = True,
+  #  remote = "https://github.com/antirez/linenoise.git",
+  #  build_file = str(Label("//:linenoise.BUILD")),
+  #)
+  native.new_http_archive(
     name = "linenoise",
-    commit = "c894b9e59f02203dbe4e2be657572cf88c4230c3",
-    init_submodules = True,
-    remote = "https://github.com/antirez/linenoise.git",
+    url = "http://github.com/antirez/linenoise/archive/c894b9e59f02203dbe4e2be657572cf88c4230c3.tar.gz",
+    strip_prefix = "linenoise-c894b9e59f02203dbe4e2be657572cf88c4230c3", 
     build_file = str(Label("//:linenoise.BUILD")),
   )
 
